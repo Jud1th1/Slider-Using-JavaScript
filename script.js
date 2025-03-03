@@ -2,24 +2,25 @@
 //it doesn't do anything until all the pictures have donwloaded. 
 
 window.addEventListener('load', function(){
-    //How many slides?
+    // 1️⃣ How many slides are in the slider?
     const slideCount = document.querySelectorAll('#slider-wrapper ul li').length;
-    //How wide is each slide?
+    // 2️⃣ How wide is each slide? (We get the width of the slider container itself)
     const slideWidth = document.querySelector('#slider-wrapper').offsetWidth;
-    //Total width of the slider
+    // 3️⃣ Total width of the full strip of slides (all slides side by side)
     const totalWidth = slideCount * slideWidth + 'px';
-    //Slider DOM element 
+    // 4️⃣ Grab the actual <ul> that contains all the slides- Slider DOM element 
     const slider = document.querySelector('#slider-wrapper ul');
-    //Next button 
+    // 5️⃣ Get the Next and Previous buttons
     const next = document.getElementById('next');
-    //Previous button 
     const previous = document.getElementById('prev');
 
-
+    // 6️⃣ Set up a position tracker and counter for which slide is showing
     let leftPosition = 0;
     let counter = 0; 
+    // 7️⃣ Set the <ul>'s total width so all slides fit in a row
     slider.style.width = totalWidth;
 
+    // 8️⃣ Handle NEXT button click
     next.addEventListener('click', function(event){
         event.preventDefault();
         counter ++;
@@ -36,8 +37,9 @@ window.addEventListener('load', function(){
             slider.style.left = leftPosition;
         }
     });
+    
    
-
+    // 9️⃣ Handle PREVIOUS button click
     previous.addEventListener('click', function(){
         counter --;
 
