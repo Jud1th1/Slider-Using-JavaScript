@@ -1,4 +1,5 @@
-//Lets start with putting the script inside an event handler for when the window loads so that it doesn't do anything until all the pictures have donwloaded. 
+//Lets start with putting the script inside an event handler for when the window loads so that
+//it doesn't do anything until all the pictures have donwloaded. 
 
 window.addEventListener('load', function(){
     //How many slides?
@@ -17,18 +18,35 @@ window.addEventListener('load', function(){
 
     let leftPosition = 0;
     let counter = 0; 
-    slider.computedStyleMap.width = totalWidth;
+    slider.style.width = totalWidth;
 
     next.addEventListener('click', function(event){
         event.preventDefault();
         counter ++;
         if(counter == slideCount){
             //set the counter to 0
+            counter = 0;
             //set the left position to 0
+            leftPosition = 0;
             //move the slider into posistion
+            slider.style.left = leftPosition;
         }else{
             //move the slider to the next slide
+            leftPosition = `-${counter * slideWidth}px`;
+            slider.style.left = leftPosition;
         }
     });
    
+
+    previous.addEventListener('click', function(){
+        counter --;
+
+        if (counter < 0){
+            counter = slideCount - 1;
+        }
+
+        leftPosition = `-${counter * slideWidth}px`;
+        slider.style.left = leftPosition;
+    });
+
 });
